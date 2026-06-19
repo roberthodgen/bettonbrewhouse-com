@@ -1,0 +1,43 @@
+name: 🚀 Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write   # required for OIDC
+  contents: read    # required to checkout code
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🆔 Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::048044547730:role/bettonbrewhouse-deploy
+          role-session-name: GitHubDeploy
+          aws-region: us-east-1
+
+      - name: 🔄️ Upload index.html
+        run: aws s3 cp index.html s3://bettonbrewhouse-com/index.html
+
+      - name: 🔄️ Upload robots.txt
+        run: aws s3 cp robots.txt s3://bettonbrewhouse-com/robots.txt --cache-control "max-age=86400, public"
+
+      - name: 🔄️ Upload sitemap.xml
+        run: aws s3 cp sitemap.xml s3://bettonbrewhouse-com/sitemap.xml --cache-control "max-age=86400, public"
+
+      - name: 🔄️ Upload images
+        run: aws s3 sync images/ s3://bettonbrewhouse-com/images/ --cache-control "max-age=31536000, public"
+
+      - name: 🧹 Invalidate CloudFront cache
+        run: >
+          aws cloudfront create-invalidation
+          --distribution-id E325XGV5XOOLEF
+          --paths "/" "/*"
+          --no-cli-pager
