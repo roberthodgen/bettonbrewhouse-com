@@ -25,34 +25,70 @@
   <meta name="twitter:description" content="Nestled in Tallahassee's Betton Hills, Betton Brewhouse is a homebrew passion project. Explore our beer styles and join us." />
   <meta name="twitter:image" content="https://www.bettonbrewhouse.com/images/share.jpg" />
   <style>
+    :root {
+      /* Brand */
+      --brand-live-oak: #173932;
+      --brand-fresh-hop: #4F6E2C;
+      --brand-golden-wort: #E7AD58;
+      --brand-toasted-malt: #A4722E;
+      --brand-foam: #FFFFFF;
+
+      /* Supporting */
+      --brand-pilsner: #F4D99A;
+      --brand-hop-leaf: #78944A;
+      --brand-roasted-malt: #654321;
+      --brand-deep-cellar: #0D2722;
+      --brand-pilsner-foam: #FAF7EF;
+      --brand-spent-grain: #DED5C3;
+      --brand-kettle: #5B625E;
+
+      /* Semantic */
+      --color-background: var(--brand-pilsner-foam);
+      --color-surface: var(--brand-foam);
+      --color-text: var(--brand-live-oak);
+      --color-text-muted: var(--brand-kettle);
+      --color-primary: var(--brand-live-oak);
+      --color-secondary: var(--brand-fresh-hop);
+      --color-accent: var(--brand-golden-wort);
+      --color-border: var(--brand-spent-grain);
+
+      --bs-body-bg: var(--color-background);
+      --bs-body-color: var(--color-text);
+      --bs-link-color: var(--color-primary);
+      --bs-link-hover-color: var(--color-secondary);
+      --bs-border-color: var(--color-border);
+      --bs-primary: var(--color-primary);
+      --bs-secondary: var(--color-secondary);
+    }
+
     body {
-      color: #173932;
-      background-color: #FCF2CD;
+      color: var(--color-text);
+      background-color: var(--color-background);
       font-family: 'Merriweather', serif;
     }
 
     a {
-      color: #173932;
+      color: var(--color-primary);
     }
 
     .bg-dark a {
-      color: #FCF2CD;
+      color: var(--color-background);
     }
 
     .list-group-item.bg-dark {
-      background-color: #173932 !important;
-      border-color: #A4722E;
-      color: #FCF2CD;
+      background-color: var(--color-primary) !important;
+      border-color: var(--color-border);
+      color: var(--color-background);
     }
 
     .list-group-item.bg-light {
-      background-color: #FCF2CD !important;
-      border-color: #A4722E;
-      color: #173932;
+      background-color: var(--color-background) !important;
+      border-color: var(--color-border);
+      color: var(--color-text);
     }
 
     hr {
-      border-color: #A4722E;
+      border-color: var(--color-accent);
       opacity: 1;
       max-width: 50%;
       margin-left: auto;
@@ -89,10 +125,10 @@
   </div>
 </section>
 
-<section class="py-5" style="background-color: #173932;" aria-label="Beer styles">
+<section class="py-5" style="background-color: var(--color-primary);" aria-label="Beer styles">
   <div class="container-fluid py-5">
     <div class="container">
-      <h2 class="fw-bold text-center mb-5 fs-1" style="color: #FCF2CD;">
+      <h2 class="fw-bold text-center mb-5 fs-1" style="color: var(--color-background);">
         Styles Brewed
       </h2>
       <div class="row justify-content-center">
@@ -299,7 +335,7 @@
             </li>
             <li class="list-group-item bg-light py-4">
               <h2 class="fw-bold fs-4">
-                <span class="badge me-2" style="background-color: #173932; text-decoration: none;" title="Competition result.">
+                <span class="badge me-2" style="background-color: var(--color-primary); text-decoration: none;" title="Competition result.">
                   Did Not Place
                 </span>
                 <a href="https://share.brewfather.app/4sXoORomjqBzih">
@@ -357,10 +393,10 @@
   </div>
 </section>
 
-<section class="py-5" style="background-color: #173932;" aria-label="Tagline">
+<section class="py-5" style="background-color: var(--color-primary);" aria-label="Tagline">
   <div class="container-fluid py-5">
     <div class="container">
-      <p class="text-center mt-2 mb-0 fs-3 fst-italic" style="color: #FCF2CD;">
+      <p class="text-center mt-2 mb-0 fs-3 fst-italic" style="color: var(--color-background);">
         Sip, savor, stay awhile.
       </p>
     </div>

@@ -1,9 +1,10 @@
 # Agent Notes
 
 - This is a static single-page site: `index.html` is the app entrypoint and contains the markup plus inline CSS.
-- There is no package manifest, lockfile, build step, test runner, formatter, linter, or README in the repo.
+- There is no package manifest, lockfile, build step, test runner, formatter, or linter in the repo.
 - Assets live in `images/`; `index.html` references paths such as `images/Color%20Badge.svg` and `images/Color%20Tree.png`, so preserve URL encoding for filenames with spaces.
 - External styling comes from Bootstrap 5.3.3 via jsDelivr and Merriweather via Google Fonts; there is no local CSS bundle.
+- Theme colors are documented in `README.md` and defined as CSS custom properties in `index.html`; prefer semantic variables such as `--color-primary` over raw hex values for site styling. Raw hex values are acceptable for non-theme values such as SRM beer color badges.
 - Automated deployment via GitHub Actions (`.github/workflows/deploy.yml`) triggers on push to `main`; uses OIDC to assume an IAM role for S3 + CloudFront.
 - `robots.txt` and `sitemap.xml` are deployed alongside `index.html` and `images/`; they have no `<lastmod>` dates so they never go stale.
 - Manual fallback: `make deploy` still works locally using an AWS CLI profile.
